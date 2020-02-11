@@ -1,6 +1,4 @@
-from flask import Flask, jsonify
 from flask_cors import CORS
-from flask import render_template
 import urllib.request, json
 from flask import Flask, request, url_for, redirect, render_template
 
@@ -37,7 +35,8 @@ def south_station_table():
     data_list = build_table(data)
     return render_template('tabletemplate.html', posts=data_list)
 
-# Filteres data and Builds table for each station
+
+# Filters data and Builds table for each station
 def build_table(data):
     data_list = []
     for item in data["data"]:
