@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table V01</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="../static/BootstrapFiles/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/BootstrapFiles/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/BootstrapFiles/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/BootstrapFiles/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/BootstrapFiles/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/BootstrapFiles/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/BootstrapFiles/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/BootstrapFiles/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+<meta charset='utf-8'/>
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Destination</th>
+								<th class="column2">Departure Time</th>
+								<th class="column3">Track #</th>
+								<th class="column4">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+                                {% for post in posts %}
+								<tr>
+									<td class="column1">{{ post.train.status }}</td>
+									<td class="column2">{{ post.train.status }}</td>
+									<td class="column3">{{ post.train.status }}</td>
+									<td class="column4">{{ post.train.status }}</td>
+								</tr>
+                                {% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!--===============================================================================================-->
+	<script src="../static/BootstrapFiles/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/BootstrapFiles/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/BootstrapFiles/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/BootstrapFiles/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/BootstrapFiles/js/main.js"></script>
+
+</body>
+</html>

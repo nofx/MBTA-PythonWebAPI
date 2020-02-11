@@ -2,9 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask import render_template
 import urllib.request, json
-
-with urllib.request.urlopen("https://api-v3.mbta.com/predictions?filter[stop]=South+Station") as url:
-    data = json.loads(url.read().decode())
+from flask import Flask, request, url_for, redirect, render_template
 
 # configuration
 DEBUG = True
@@ -19,36 +17,44 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 
 @app.route('/', methods=['GET'])
 def main_index():
-    return jsonify(data)
-    # return render_template('index.html');
+    return render_template('index2-pagefold.html')
 
 
-@app.route('/southstation', methods=['Get'])
-def south_station_arrivals():
-    train_arrival = {}
+@app.route('/item-1.html', methods=['GET', 'POST'])
+def north_station_table():
+    if request.method == 'POST':
+        return redirect(url_for('item-1.html'))
+    data = get_data("North+Station")
+    data_list = build_table(data)
+    return render_template('tabletemplate.html', posts=data_list)
+
+
+@app.route('/item-2.html', methods=['GET', 'POST'])
+def south_station_table():
+    if request.method == 'POST':
+        return redirect(url_for('item-2.html'))
+    data = get_data("South+Station")
+    data_list = build_table(data)
+    return render_template('tabletemplate.html', posts=data_list)
+
+# Filteres data and Builds table for each station
+def build_table(data):
     data_list = []
     for item in data["data"]:
         if item['attributes']['departure_time'] is not None:
-            data_list.append({"train": {"status": item['attributes']['status'],
-                                        "departure time": item['attributes']['departure_time'],
-                                        "id": item['relationships']['route']['data']['id']}})
-        # "arrival": item['arrival_time'],
-        # if item['attributes']['arrival_time'] is not None:
-        #     train_arrival = {'arrival_time': item['attributes']['arrival_time'],
-        #                      'status': item['attributes']['status']}
-    return jsonify(data_list)
+            train_info = {"train": {"status": item['attributes']['status'],
+                                    "departure_time": item['attributes']['departure_time'][12:16],
+                                    "id": item['relationships']['route']['data']['id']}}
+            data_list.append(train_info)
+    return data_list
 
 
-# sanity check route
-@app.route('/ping', methods=['GET'])
-def ping_pong():
-    return jsonify('pong!')
-
-
-@app.route('/INSTAMATIC/<string:test_this_thing>')
-def dappa_pong(test_this_thing):
-    input_test = test_this_thing
-    return input_test
+# Fetches data from api
+def get_data(station_name):
+    url_string = "https://api-v3.mbta.com/predictions?filter[stop]=" + station_name
+    with urllib.request.urlopen(url_string) as url:
+        data = json.loads(url.read().decode())
+    return data
 
 
 if __name__ == '__main__':

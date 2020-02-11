@@ -154,9 +154,10 @@ table tbody tr:last-child {
 }
 table td, table th {
   text-align: left;
+
 }
 table td.l, table th.l {
-  text-align: right;
+  text-align: left;
 }
 table td.c, table th.c {
   text-align: center;
@@ -193,32 +194,22 @@ tbody tr:hover {
 }
 
 .column1 {
-  width: 260px;
+  width: 100px;
   padding-left: 40px;
 }
 
 .column2 {
-  width: 160px;
+  width: 100px;
 }
 
 .column3 {
-  width: 245px;
+  width: 100px;
 }
 
 .column4 {
-  width: 110px;
-  text-align: right;
-}
-
-.column5 {
-  width: 170px;
-  text-align: right;
-}
-
-.column6 {
-  width: 222px;
-  text-align: right;
-  padding-right: 62px;
+  width: 100px;
+  text-align: left;
+  padding-right: 40px
 }
 
 
@@ -255,33 +246,23 @@ tbody tr:hover {
     top: 0;
   }
   table tbody tr td:nth-child(1):before {
-    content: "Date";
+    content: "Destination";
   }
   table tbody tr td:nth-child(2):before {
-    content: "Order ID";
+    content: "Departure Time";
   }
   table tbody tr td:nth-child(3):before {
-    content: "Name";
+    content: "Track #";
   }
   table tbody tr td:nth-child(4):before {
-    content: "Price";
-  }
-  table tbody tr td:nth-child(5):before {
-    content: "Quantity";
-  }
-  table tbody tr td:nth-child(6):before {
-    content: "Total";
+    content: "Status";
   }
 
-  .column4,
-  .column5,
-  .column6 {
+  .column4 {
     text-align: left;
   }
 
   .column4,
-  .column5,
-  .column6,
   .column1,
   .column2,
   .column3 {
