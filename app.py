@@ -15,7 +15,7 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 
 @app.route('/', methods=['GET'])
 def main_index():
-    return render_template('index2-pagefold.html')
+    return render_template('mbta-schedule.html')
 
 
 @app.route('/item-1.html', methods=['GET', 'POST'])
