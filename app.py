@@ -1,6 +1,8 @@
-from flask_cors import CORS
-import urllib.request, json
+import json
+import urllib.request
+import flask
 from flask import Flask, request, url_for, redirect, render_template
+from flask_cors import CORS
 
 # configuration
 DEBUG = True
